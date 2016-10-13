@@ -1,4 +1,4 @@
-package is.ru.stringcalculator;
+package String_Calculator;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -7,8 +7,14 @@ public class CalculatorTest {
 
 	//Test input of an empty string
 	@Test
-	public void testEmptyString()
+	public void test_EmptyString()
 	{
 		assertEquals(0, Calculator.add(""));
+	}
+
+	@Test
+	public void test_one_value()
+	{
+		assertEquals(1,Calculator.add("1"));
 	}
 }
