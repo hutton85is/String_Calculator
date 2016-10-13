@@ -19,15 +19,25 @@ public class Calculator
 	//split string into integer array
 	public static int[] strtoint(String s)
 	{
+		String[] sarr;
+		sarr = s.split("[,\\n]");
+		
+		ArrayList<String> items = new ArrayList<String>(Arrays.asList(sarr));
+		items.removeAll(Arrays.asList(null, " ", ""));
 
-		int[] arr = new int[1];
-		if (s == "")
+		if (items.size() == 0)
 		{
-			arr[0] = 0;
+			int[] a = new int[1];
+			a[0] = 0;
+			return a;
 		}
-		else
+
+		int[] arr = new int[items.size()];
+
+		//enter numbers from string array to integer array
+		for (int i = 0; i < items.size(); i++)
 		{
-			arr[0] = Integer.parseInt(s);
+			arr[i] = Integer.parseInt(items.get(i));
 		}
 		return arr;
 	}
