@@ -17,4 +17,11 @@ public class CalculatorTest {
 	{
 		assertEquals(1,Calculator.add("1"));
 	}
+
+	@Test
+	public void test_multiple_numbers()
+	{
+		int[] a = {1,2,3};
+		assertEquals(6,Calculator.sum(a));
+	}
 }
