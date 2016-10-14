@@ -14,6 +14,18 @@ public class Calculator
 		return a[0]  + sum(Arrays.copyOfRange(a,1,a.length));
 	}
 
+	//creating an array of negative numbers if they exist, and throw
+	//exception
+	public static void is_it_negative(int ... arr)
+	{
+		int[] neg = Arrays.stream(arr).filter(x -> x < 0).toArray();
+		if (neg.length > 0)
+		{
+			throw new IllegalArgumentException
+			("Negatives not allowed: " + Arrays.toString(neg));
+		}
+	}
+
 	//split string into integer array
 	public static int[] strtoint(String s)
 	{
@@ -28,20 +40,15 @@ public class Calculator
 			return a;
 		}
 
-		//enter numbers from string array to integer array
+		//creating an integer array out of numbers from string array
 		int[] arr = new int[items.size()];
 		for (int i = 0; i < items.size(); i++)
 		{
 			arr[i] = Integer.parseInt(items.get(i));
 		}
 
-		int[] neg = Arrays.stream(arr).filter(x -> x < 0).toArray();
-	
-		if (neg.length > 0)
-		{
-			throw new IllegalArgumentException
-			("Negatives not allowed: " + Arrays.toString(neg));
-		}
+		//checking for a negative number
+		is_it_negative(arr);
 		
 		return arr;
 	}
