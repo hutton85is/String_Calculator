@@ -91,4 +91,18 @@ public class CalculatorTest {
 	{
 		assertEquals(10,Calculator.add("\n4,2,3\n,1,0"));
 	}
+
+	//Test : test add function with negative numbers, should throw IllegalArgumentExpression
+	@Test(expected = IllegalArgumentException.class)
+	public void test_add_negatives() throws IllegalArgumentException 
+	{
+	    Calculator.add("-1,2,3,-8");
+	}
+
+	//Test : test add function with a number larger than 1000, should be ignored
+	@Test
+	public void test_add_largenumber()
+	{
+		assertEquals(10,Calculator.add("\n4,2,3\n,1,0"));
+	}
 }

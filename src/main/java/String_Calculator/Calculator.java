@@ -28,13 +28,21 @@ public class Calculator
 			return a;
 		}
 
-		int[] arr = new int[items.size()];
-
 		//enter numbers from string array to integer array
+		int[] arr = new int[items.size()];
 		for (int i = 0; i < items.size(); i++)
 		{
 			arr[i] = Integer.parseInt(items.get(i));
 		}
+
+		int[] neg = Arrays.stream(arr).filter(x -> x < 0).toArray();
+	
+		if (neg.length > 0)
+		{
+			throw new IllegalArgumentException
+			("Negatives not allowed: " + Arrays.toString(neg));
+		}
+		
 		return arr;
 	}
 
