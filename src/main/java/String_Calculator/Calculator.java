@@ -45,11 +45,16 @@ public class Calculator
 		for (int i = 0; i < items.size(); i++)
 		{
 			arr[i] = Integer.parseInt(items.get(i));
+			//number cannot be greater than 1000
+			if (arr[i] > 1000)
+			{
+				arr[i] = 0;
+			}
 		}
 
 		//checking for a negative number
 		is_it_negative(arr);
-		
+
 		return arr;
 	}
 

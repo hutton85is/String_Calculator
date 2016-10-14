@@ -103,6 +103,6 @@ public class CalculatorTest {
 	@Test
 	public void test_add_largenumber()
 	{
-		assertEquals(10,Calculator.add("\n4,2,3\n,1,0"));
+		assertEquals(1007,Calculator.add("1000,1001,2000,5,2"));
 	}
 }
