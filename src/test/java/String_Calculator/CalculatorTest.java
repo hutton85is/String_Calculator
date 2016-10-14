@@ -42,8 +42,7 @@ public class CalculatorTest {
 	@Test
 	public void test_strtoint_emptyvalue()
 	{
-		int[] arr = new int[1];
-		arr[0] = 0;
+		int[] arr = {0};
 		assertArrayEquals(arr,Calculator.strtoint(""));
 	}
 
@@ -51,8 +50,7 @@ public class CalculatorTest {
 	@Test
 	public void test_strtoint_onenumber()
 	{
-		int[] arr = new int[1];
-		arr[0] = 1;
+		int[] arr = {1};
 		assertArrayEquals(arr,Calculator.strtoint("1"));
 	}
 
@@ -60,9 +58,7 @@ public class CalculatorTest {
 	@Test
 	public void test_strtoint_twonumbers()
 	{
-		int[] arr = new int[2];
-		arr[0] = 1;
-		arr[1] = 2;
+		int[] arr = {1,2};
 		assertArrayEquals(arr,Calculator.strtoint("1,2"));
 	}
 
@@ -70,11 +66,7 @@ public class CalculatorTest {
 	@Test
 	public void test_strtoint_fournumbers()
 	{
-		int[] arr = new int[4];
-		arr[0] = 1;
-		arr[1] = 2;
-		arr[2] = 0;
-		arr[3] = 4;
+		int[] arr = {1,2,0,4};
 		assertArrayEquals(arr,Calculator.strtoint("1,2,0,4"));
 	}
 
@@ -82,10 +74,21 @@ public class CalculatorTest {
 	@Test
 	public void test_strtoint_newline()
 	{
-		int[] arr = new int[3];
-		arr[0] = 1;
-		arr[1] = 2;
-		arr[2] = 3;
+		int[] arr = {1,2,3};
 		assertArrayEquals(arr,Calculator.strtoint("1,2\n,3"));
+	}
+
+	//Test : test add function with "1,2,4"
+	@Test
+	public void test_add_multiplenumbers()
+	{
+		assertEquals(7,Calculator.add("1,2,4"));
+	}
+
+	//Test : test add function with "\n4,2,3\n,1,0"
+	@Test
+	public void test_add_newline()
+	{
+		assertEquals(10,Calculator.add("\n4,2,3\n,1,0"));
 	}
 }

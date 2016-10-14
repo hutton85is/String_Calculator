@@ -41,10 +41,6 @@ public class Calculator
 	//recieve numbers as text, and return their sum
 	public static int add(String text)
 	{
-		if (text == "")
-		{
-			return 0;
-		}
-		return Integer.parseInt(text);
+		return sum(strtoint(text));
 	}
 }
