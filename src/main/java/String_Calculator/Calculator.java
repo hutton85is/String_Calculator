@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Calculator
 {
-	//recive integer array and return their sum
+	//recieve integer array and return their sum
 	public static int sum(int ... a)
 	{
 		if (a.length == 1)
@@ -14,8 +14,7 @@ public class Calculator
 		return a[0]  + sum(Arrays.copyOfRange(a,1,a.length));
 	}
 
-	//creating an array of negative numbers if they exist, and throw
-	//exception
+	//if negative numbers exist, throw an exception
 	public static void is_it_negative(int ... arr)
 	{
 		int[] neg = Arrays.stream(arr).filter(x -> x < 0).toArray();
@@ -30,7 +29,18 @@ public class Calculator
 	public static int[] strtoint(String s)
 	{
 		//Create a list containing a split string where "," and "\\n" is found
-		ArrayList<String> items = new ArrayList<String>(Arrays.asList(s.split("[,\\n]")));
+		String splitter = "[,\n]";
+		//if string starts with "//" then assign the next character as new delimiter
+		if (s.startsWith("//"))
+		{
+			splitter = "[" + s.substring(2,3) + "\\" + "n]";
+			System.out.println(s);
+			s = s.substring(2,s.length());
+		}
+
+		ArrayList<String> items = new ArrayList<String>
+		(Arrays.asList(s.split(splitter)));
+
 		items.removeAll(Arrays.asList(null, ""));
 
 		//if empty string is the input return zero

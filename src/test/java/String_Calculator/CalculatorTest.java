@@ -99,10 +99,17 @@ public class CalculatorTest {
 	    Calculator.add("-1,2,3,-8");
 	}
 
-	//Test : test add function with a number larger than 1000, should be ignored
+	//Test : testing add function with numbers > 1000, they should be ignored
 	@Test
 	public void test_add_largenumber()
 	{
 		assertEquals(1007,Calculator.add("1000,1001,2000,5,2"));
+	}
+
+	//Test : testing ability to change delimiter
+	@Test
+	public void test_add_changedelimiter()
+	{
+		assertEquals(3,Calculator.add("//;\n1;2"));
 	}
 }
