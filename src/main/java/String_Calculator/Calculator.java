@@ -7,28 +7,24 @@ public class Calculator
 	//recive integer array and return their sum
 	public static int sum(int ... a)
 	{
-		int result = 0;
-		//summing all elements of an array
-		for (int i = 0; i < a.length; i++)
+		if (a.length == 1)
 		{
-			result += a[i];
+			return a[a.length-1];
 		}
-		return result;
+		return a[0]  + sum(Arrays.copyOfRange(a,1,a.length));
 	}
 
 	//split string into integer array
 	public static int[] strtoint(String s)
 	{
-		String[] sarr;
-		sarr = s.split("[,\\n]");
-		
-		ArrayList<String> items = new ArrayList<String>(Arrays.asList(sarr));
-		items.removeAll(Arrays.asList(null, " ", ""));
+		//Create a list containing a split string where "," and "\\n" is found
+		ArrayList<String> items = new ArrayList<String>(Arrays.asList(s.split("[,\\n]")));
+		items.removeAll(Arrays.asList(null, ""));
 
+		//if empty string is the input return zero
 		if (items.size() == 0)
 		{
-			int[] a = new int[1];
-			a[0] = 0;
+			int[] a = {0};
 			return a;
 		}
 
@@ -49,7 +45,6 @@ public class Calculator
 		{
 			return 0;
 		}
-		int result = Integer.parseInt(text);
-		return result;
+		return Integer.parseInt(text);
 	}
 }
